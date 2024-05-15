@@ -1,7 +1,7 @@
 const logueese=()=>{
     const email=document.getElementById("email");
     const contrasena=document.getElementById("contrasena");
-
+    console.log(email.value)
     let option={
         method:"POST",
         headers:{
@@ -12,6 +12,7 @@ const logueese=()=>{
             "contrasena":contrasena.value
         })
     };
+
     let url="http://localhost:9000/api/login";
 
     fetch(url, option)
