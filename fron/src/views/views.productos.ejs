@@ -1,0 +1,40 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+   
+</head>
+<body> -->
+    <%- include("partials/partials.dash.header.ejs")  %>
+    <h1><%= titulo %></h1>
+    <div class="tableproducto">
+    <table border="1"">
+       <tr>
+        <th>Id</th>
+        <th>nombrep</th>
+        <th>color</th>
+        <th>precio</th>
+        <th>Opciones</th>
+        </tr>
+        <% data.forEach(function(registro){%>
+         <tr>
+            <td><%= registro.idproducto %></td>
+            <td><%= registro.nombrep %></td>
+            <td><%= registro.color %></td>
+            <td><%= registro.precio %></td>
+            <td>
+                <button>Modificar</button>
+                <button id="elimina" onclick="eliminaRegistro(event)">Eliminar</button>
+            </td>
+         </tr>
+        <% }) %>
+    </table>
+</div>
+    <script src="./js/main.js"></script>
+    <%- include("partials/partials.dash.footer.ejs")  %>
+
+<!-- </body>
+</html> -->

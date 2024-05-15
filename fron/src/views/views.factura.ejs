@@ -1,0 +1,36 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+   
+</head>
+<body> -->
+    <%- include("partials/partials.dash.header.ejs")  %>
+    <h1><%= titulo %></h1>
+    <table border="1"">
+       <tr>
+        <th>idfactura</th>
+        <th>idusuario</th>
+        <th>idproductos</th>
+        <th>cantidad</th>
+        <th>fecha</th>
+        </tr>
+        <% data.forEach(function(registro){%>
+         <tr>
+            <td><%= registro.idfactura %></td>
+            <td><%= registro.idusuario %></td>
+            <td><%= registro.idproducto %></td>
+            <td><%= registro.cantidad %></td>
+            <td><%= registro.fecha %></td>
+         </tr>
+        <% }) %>
+    </table>
+</div>
+    <script src="./js/main.js"></script>
+    <%- include("partials/partials.dash.footer.ejs")  %>
+
+<!-- </body>
+</html> -->

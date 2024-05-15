@@ -1,0 +1,111 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "users",
+    "collectionId": "0e03ad2e-e9c5-4361-ab2f-f38ca4698452",
+    "dateExported": "2024-05-06T18:29:35.527Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "adb451d4-278b-4006-8293-6b5cc1829370",
+            "colId": "0e03ad2e-e9c5-4361-ab2f-f38ca4698452",
+            "containerId": "",
+            "name": "Eliminar todos los usuario",
+            "url": "http://localhost:9000/api/usuario",
+            "method": "DELETE",
+            "sortNum": 10000,
+            "created": "2023-05-02T19:42:12.218Z",
+            "modified": "2024-05-03T19:34:03.021Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"idusuario\":5558943,\n  \"usuario\":\"paco\",\n  \"edad\":21,\n  \"email\":\"vale@gmail.com\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "0a562605-9b14-436a-8ab3-43491fe02452",
+            "colId": "0e03ad2e-e9c5-4361-ab2f-f38ca4698452",
+            "containerId": "",
+            "name": "Actualizar un usuario",
+            "url": "http://localhost:9000/api/usuario",
+            "method": "PUT",
+            "sortNum": 20000,
+            "created": "2023-05-02T19:42:12.219Z",
+            "modified": "2024-05-03T19:34:09.503Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"idusuario\":5558943,\n  \"usuario\":\"paco\",\n  \"edad\":21,\n  \"email\":\"vale@gmail.com\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "22666605-e37b-4ed0-b6ab-1b3361d1b7fa",
+            "colId": "0e03ad2e-e9c5-4361-ab2f-f38ca4698452",
+            "containerId": "",
+            "name": "Insertar un usuario",
+            "url": "http://localhost:9000/api/usuario",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-05-02T19:42:12.220Z",
+            "modified": "2024-05-03T19:34:32.119Z",
+            "headers": [
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imp1YW5AZXhhbXBsZS5jb20iLCJjb250cmFzZW5hIjoicGxhbnRhcyIsImZpcm1hIjoic2thcmxldHQiLCJpYXQiOjE3MTQ3NjE5NzMsImV4cCI6MTcxNDc2MjM5M30.5YFIKSAT4beT5G6wxWBR--g7dYiu9sNGXCdED6i8oqU"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"idusuario\":15,\n  \"usuario\":\"paco\",\n  \"edad\":21,\n  \"email\":\"vale@gmail.com\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "01c04cf1-c94b-45cd-8497-287f6bfe0231",
+            "colId": "0e03ad2e-e9c5-4361-ab2f-f38ca4698452",
+            "containerId": "",
+            "name": "Mostrar todos los usuarios",
+            "url": "http://localhost:9000/api/usuario/4",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2023-05-02T19:42:12.221Z",
+            "modified": "2024-05-03T19:55:48.746Z",
+            "headers": [
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imp1YW5AZXhhbXBsZS5jb20iLCJjb250cmFzZW5hIjoicGxhbnRhcyIsImZpcm1hIjoic2thcmxldHQiLCJpYXQiOjE3MTQ3NjE5NzMsImV4cCI6MTcxNDc2MjM5M30.5YFIKSAT4beT5G6wxWBR--g7dYiu9sNGXCdED6i8oqU"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"idusuario\":5558943,\n  \"usuario\":\"paco\",\n  \"edad\":21,\n  \"email\":\"vale@gmail.com\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "d44da92c-98b5-4762-8edb-e848a3f20cae",
+            "colId": "0e03ad2e-e9c5-4361-ab2f-f38ca4698452",
+            "containerId": "",
+            "name": "loginUsuario",
+            "url": "http://localhost:9000/api/login",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2024-05-02T19:33:08.915Z",
+            "modified": "2024-05-03T19:13:44.013Z",
+            "headers": [
+                {
+                    "name": "x-access-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imp1YW5AZXhhbXBsZS5jb20iLCJjb250cmFzZW5hIjoicGxhbnRhcyIsImZpcm1hIjoic2thcmxldHQiLCJpYXQiOjE3MTQ3NjEzMzQsImV4cCI6MTcxNDc2MTc1NH0.vl3tRer216_H3Jj5l6x4bgc44AlCuQlbFy3ddldY6IA\""
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"juan@example.com\",\n  \"contrasena\": \"plantas\"\n}",
+                "form": []
+            }
+        }
+    ],
+    "ref": "PbNuSOapjcialN4ZzR1n2i_hb4gKonGrY02hREcb1FALmu5B15k02ZvPnG0fAGL-kF1Fyd4XnkTebGCpwLy4_g"
+}

@@ -1,0 +1,41 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+   
+</head>
+<body> -->
+
+<%- include("partials/partials.dash.header.ejs")  %>
+    <h1><%= titulo %></h1>
+    <table border="1">
+       <tr>
+        <th>Id</th>
+        <th>Usuario</th>
+        <th>Edad</th>
+        <th>Email</th>
+        <th>Contrasena</th>
+        <th>Opciones</th>
+        </tr>
+        <% data.forEach(function(registro){%>
+         <tr>
+            <td><%= registro.idusuario %></td>
+            <td><%= registro.usuario %></td>
+            <td><%= registro.edad %></td>
+            <td><%= registro.email %></td>
+            <td><%= registro.contrasena %></td>
+            <td>
+                <button>Modificar</button>
+                <button id="elimina" onclick="eliminaRegistro(event)">Eliminar</button>
+            </td>
+         </tr>
+        <% }) %>
+    </table>
+    <script src="./js/main.js"></script>
+    <%- include("partials/partials.dash.footer.ejs")  %>
+
+<!-- </body>
+</html> -->
