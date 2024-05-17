@@ -55,13 +55,14 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../dash/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><%= datos.email %></span>
             </a>
             <ul class="dropdown-menu">
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-right">
-                  <a href="#" class="btn btn-danger btn-flat">Salir</a>
+                  <button onclick="salirUsuario()" class="btn btn-danger btn-flat">Salir</button>
+
                 </div>
               </li>
             </ul>
@@ -80,7 +81,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header"></li>
-        <li><a href="/dash"><i class="fa fa-user"></i> <span>Crear Usuario</span></a></li>
+        <li><a href="/registrar"><i class="fa fa-user"></i> <span>Crear Usuario</span></a></li>
         <li><a href="/usuario"><i class="fa fa-user"></i> <span>Listar Usuario</span></a></li>
         <li><a href="/productos"><i class="fa fa-user"></i> <span>Listar Productos</span></a></li>
         <li><a href="/factura"><i class="fa fa-user"></i> <span>Listar factura</span></a></li>

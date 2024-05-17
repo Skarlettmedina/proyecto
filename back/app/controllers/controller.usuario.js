@@ -8,9 +8,9 @@ export const crearUsuario = async(req, res)=>{
     try {
         let resultado = await pool.query(`
             insert into usersa(idusuario, 
-            usuario,edad,email,contrasena) values(
+            usuario,email,contrasena) values(
                     ${info.idusuario},'${info.usuario}',
-                    ${info.edad},'${info.email}','${info.contrasena}'
+                    '${info.email}','${info.contrasena}'
             )
         `);
         if (resultado[0].affectedRows > 0){
@@ -52,7 +52,6 @@ export const actualizarUsuario = async(req, res) => {
             update usersa
             set
             usuario = '${info.usuario}',
-            edad = ${info.edad},
             email = '${info.email}',
             contrasena = '${info.contrasena}'
             where idusuario = ${info.idusuario}

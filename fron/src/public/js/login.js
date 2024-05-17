@@ -23,7 +23,7 @@ const logueese=()=>{
        
          if (data.token !== undefined) {
              window.location.href="/dash";
-            console.log(data.token)
+            console.log(data.token);
          }else{
 
             alertify.error('Clave Incorrecta');
