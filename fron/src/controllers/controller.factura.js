@@ -8,7 +8,7 @@ export const factura = (req, res)=>{
  
          res.render("views.factura.ejs", 
          {
-             "titulo":"Facturas realizadas" ,
+             "datos":"Facturas realizadas" ,
              "data":data
          });
      })

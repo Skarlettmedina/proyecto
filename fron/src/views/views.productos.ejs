@@ -8,8 +8,25 @@
    
 </head>
 <body> -->
-    <%- include("partials/partials.dash.header.ejs")  %>
-    <h1><%= titulo %></h1>
+
+    <%- include("partials/partials.dash.header.ejs", { datos: datos, data: data }) %>
+
+    <section class="content">
+  
+      <!-- Default box -->
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title">Lista de Usuarios</h3>
+  
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
+                    title="Collapse">
+              <i class="fa fa-minus"></i></button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+              <i class="fa fa-times"></i></button>
+          </div>
+        </div>
+        <div class="box-body">
     <div class="tableproducto">
     <table border="1"">
        <tr>
@@ -26,15 +43,84 @@
             <td><%= registro.color %></td>
             <td><%= registro.precio %></td>
             <td>
-                <button>Modificar</button>
-                <button id="elimina" onclick="eliminaRegistro(event)">Eliminar</button>
+                <button class="btn btn-warning" data-toggle="modal" data-target="#modal-warning"  onclick="cargarUsuario(event);">Modificar</button>
+                <button class="btn btn-danger" id="elimina" onclick="eliminaRegistro(event)">Eliminar</button>
             </td>
          </tr>
         <% }) %>
     </table>
 </div>
+            <input type="hidden" id="idproducto">
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+          Footer
+        </div>
+        <!-- /.box-footer-->
+      </div>
+      <!-- /.box -->
+  
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+  </div>
+  
+  <div class="modal modal-warning fade" id="modal-warning">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Warning Modal</h4>
+        </div>
+        <div class="modal-body">
+          <div class="box-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Usuario</label>
+                        <input type="text" id="usuario" class="form-control" placeholder="Insertar Usuario">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Correo</label>
+                        <input type="email" class="form-control" id="email" placeholder="Insertar Correo">
+                      </div>
+                    
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Contraseña</label>
+                        <input type="password" class="form-control" id="contrasena" placeholder="Insertar Contraseña">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Verificar Contraseña</label>
+                        <input type="password" class="form-control" id="vcontrasena" placeholder="Verificar Contraseña">
+                      </div>
+                      <label>
+                        <input type="checkbox"> Recordar Contraseña
+                      </label>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-outline" onclick="modificarUsuario();">Guardar</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  
     <script src="./js/main.js"></script>
-    <%- include("partials/partials.dash.footer.ejs")  %>
-
-<!-- </body>
-</html> -->
+    </div>
+  <%- include("partials/partials.dash.footer.ejs") %>
+  
+  
+  <!-- </body>
+  </html> -->

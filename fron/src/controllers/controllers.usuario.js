@@ -11,7 +11,7 @@ export const listarUsuario = (req, res)=>{
 
         res.render("views.usuario.ejs" , 
         {
-            "titulo":"Usuarios Registrados" ,
+            "datos":"hola@gmail.com" ,
             "data":data
         });
     })

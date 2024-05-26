@@ -8,7 +8,7 @@ export const productos = (req, res)=>{
 
         res.render("views.productos.ejs" , 
         {
-            "titulo":"Lista de Productos" ,
+            "datos":"productos" ,
             "data":data
         });
     })

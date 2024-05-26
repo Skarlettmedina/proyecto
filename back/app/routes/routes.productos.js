@@ -8,6 +8,6 @@ rutaProductos.post("/productos", crearProductos);
 rutaProductos.get("/productos/:id", mostrarProductos);
 rutaProductos.get("/productos",listarProductos);
 rutaProductos.put("/productos",actualizarProductos);
-rutaProductos.delete("/productos/:id", validarPermiso, eliminarProductos);
+rutaProductos.delete("/productos/:id", eliminarProductos);
 
 export default rutaProductos;

@@ -118,6 +118,7 @@ export const loginUsuario = async(req, res)=>{
                 email: email,
                 contrasena: contrasena
                 });
+                console.log(token);
         res.json({
             respuesta: "Logueo correcto",
             estado: true,
@@ -142,5 +143,4 @@ export const listarUsuario = async(req, res)=>{
             "method": "get"
         });
     }
-    
 }
