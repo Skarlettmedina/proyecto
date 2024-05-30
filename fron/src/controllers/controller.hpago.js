@@ -8,13 +8,11 @@ export const hpago = (req, res)=>{
  
          res.render("views.hpago.ejs", 
          {
-             "titulo":"Historial de Productos" ,
+             "datos":"Historial de Productos" ,
              "data":data
          });
      })
      
      .catch(error=>console.error(error))
-     
- 
  }
   

@@ -14,7 +14,8 @@ export const productos = (req, res)=>{
     })
     
     .catch(error=>console.error(error))
-    
-
+}
+export const registrarProductos = (req, res)=>{
+    res.render("views.registro.productos.ejs", {"datos":"skarlett"});
 }
  

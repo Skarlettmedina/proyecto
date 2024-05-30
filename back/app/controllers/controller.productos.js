@@ -5,8 +5,11 @@ export const crearProductos = async (req, res) => {
 
     try {
         let resultado = await pool.query(`
-            INSERT INTO productos (idproducto, nombrep, color, precio)
-            VALUES (${info.idproducto}, '${info.nombrep}', '${info.color}', ${info.precio})
+        insert into productos(idproducto, 
+            nombrep,color,precio) values (
+                    ${info.idproducto},'${info.nombrep}',
+                    '${info.color}','${info.precio}'
+            )
         `);
         if (resultado[0].affectedRows > 0) {
             res.json({
@@ -46,10 +49,9 @@ export const actualizarProductos = async (req, res) => {
         let resultado = await pool.query(`
             UPDATE productos
             SET
-            nombreproducto = '${info.nombreproducto}',
+            nombrep = '${info.nombrep}',
             color = '${info.color}',
-            preciounidad = ${info.preciounidad},
-            preciomayor = ${info.preciomayor}
+            precio = ${info.precio}
             WHERE idproducto = ${info.idproducto}
         `);
         if (resultado[0].affectedRows > 0) {

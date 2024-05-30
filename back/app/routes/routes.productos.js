@@ -4,10 +4,10 @@ import {actualizarProductos, crearProductos, eliminarProductos, listarProductos,
 
 const rutaProductos = Router();
 
-rutaProductos.post("/productos", crearProductos);
+rutaProductos.post("/productos",validarPermiso, crearProductos);
 rutaProductos.get("/productos/:id", mostrarProductos);
 rutaProductos.get("/productos",listarProductos);
-rutaProductos.put("/productos",actualizarProductos);
-rutaProductos.delete("/productos/:id", eliminarProductos);
+rutaProductos.put("/productos",validarPermiso, actualizarProductos);
+rutaProductos.delete("/productos",validarPermiso, eliminarProductos);
 
 export default rutaProductos;

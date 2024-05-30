@@ -15,8 +15,8 @@
   
       <!-- Default box -->
       <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title">Lista de Usuarios</h3>
+        <div class="box-header with-border bg-navy">
+          <h3 class="box-title">Lista de Productos</h3>
   
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -29,34 +29,34 @@
         <div class="box-body">
     <div class="tableproducto">
     <table border="1"">
-       <tr>
-        <th>Id</th>
-        <th>nombrep</th>
-        <th>color</th>
-        <th>precio</th>
-        <th>Opciones</th>
-        </tr>
-        <% data.forEach(function(registro){%>
-         <tr>
-            <td><%= registro.idproducto %></td>
-            <td><%= registro.nombrep %></td>
-            <td><%= registro.color %></td>
-            <td><%= registro.precio %></td>
+      <thead>
+        <tr>
+            <th>Id</th>
+            <th>nombrep</th>
+            <th>color</th>
+            <th>precio</th>
+            <th>Opciones</th>
+          </tr>
+      </thead>
+      <tbody>
+        <% data.forEach(function(registro) { %>
+          <tr>
+            <tr>
+              <td><%= registro.idproducto %></td>
+              <td><%= registro.nombrep %></td>
+              <td><%= registro.color %></td>
+              <td><%= registro.precio %></td>
             <td>
-                <button class="btn btn-warning" data-toggle="modal" data-target="#modal-warning"  onclick="cargarUsuario(event);">Modificar</button>
-                <button class="btn btn-danger" id="elimina" onclick="eliminaRegistro(event)">Eliminar</button>
+                <button class="btn btn bg-purple" data-toggle="modal" data-target="#modal-warning"  onclick="cargarProducto(event);">Modificar</button>
+                <button class="btn btn bg-navy" id="elimina" onclick="eliminarProducto(event);">Eliminar</button>
             </td>
-         </tr>
-        <% }) %>
+          </tr>
+    <% }) %>
+    </tbody>
     </table>
-</div>
             <input type="hidden" id="idproducto">
         </div>
         <!-- /.box-body -->
-        <div class="box-footer">
-          Footer
-        </div>
-        <!-- /.box-footer-->
       </div>
       <!-- /.box -->
   
@@ -68,8 +68,8 @@
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
   </div>
-  
-  <div class="modal modal-warning fade" id="modal-warning">
+
+  <div class="modal modal-bg-purple fade  id="modal-warning">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -82,42 +82,35 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label>Usuario</label>
-                        <input type="text" id="usuario" class="form-control" placeholder="Insertar Usuario">
+                        <label for="nombrep">Producto</label>
+                        <input type="text" id="nombrep" class="form-control" placeholder="Insertar Producto">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputEmail1">Correo</label>
-                        <input type="email" class="form-control" id="email" placeholder="Insertar Correo">
+                        <label for="color">Color</label>
+                        <input type="text" class="form-control" id="color" placeholder="Insertar Color">
                       </div>
                     
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Contraseña</label>
-                        <input type="password" class="form-control" id="contrasena" placeholder="Insertar Contraseña">
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputPassword1">Verificar Contraseña</label>
-                        <input type="password" class="form-control" id="vcontrasena" placeholder="Verificar Contraseña">
-                      </div>
-                      <label>
-                        <input type="checkbox"> Recordar Contraseña
-                      </label>
+                        <label for="precio">Precio</label>
+                        <input type="text" class="form-control" id="precio" placeholder="Insertar Precio">
+                    </div>
                 </div>
             </div>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-outline" onclick="modificarUsuario();">Guardar</button>
+          <button type="button" class="btn btn-outline" onclick="modificarProducto();">Guardar</button>
         </div>
       </div>
       <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
   </div>
-  
-    <script src="./js/main.js"></script>
+
+    <script src="./js/productos.js"></script>
     </div>
   <%- include("partials/partials.dash.footer.ejs") %>
   

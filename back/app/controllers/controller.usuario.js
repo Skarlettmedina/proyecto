@@ -8,9 +8,10 @@ export const crearUsuario = async(req, res)=>{
     try {
         let resultado = await pool.query(`
             insert into usersa(idusuario, 
-            usuario,email,contrasena) values(
+            usuario,email,contrasena,roles) values(
                     ${info.idusuario},'${info.usuario}',
-                    '${info.email}','${info.contrasena}'
+                    '${info.email}','${info.contrasena}',
+                    '${info.roles}'
             )
         `);
         if (resultado[0].affectedRows > 0){
@@ -46,14 +47,23 @@ export const mostrarUsuario = async(req, res)=>{
 }
 export const actualizarUsuario = async(req, res) => {
     let info = req.body;
-    
+    const inf =           
+         `update usersa
+        set
+        usuario = '${info.usuario}',
+        email = '${info.email}',
+        contrasena = '${info.contrasena}',
+        roles = '${info.roles}',
+        where idusuario = ${info.idusuario}`
+        console.log(inf);
     try {
         let resultado = await pool.query(`
             update usersa
             set
             usuario = '${info.usuario}',
             email = '${info.email}',
-            contrasena = '${info.contrasena}'
+            contrasena = '${info.contrasena}',
+            roles = '${info.roles}'
             where idusuario = ${info.idusuario}
         `);
         
@@ -69,8 +79,8 @@ export const actualizarUsuario = async(req, res) => {
         
     } catch (error) {
         res.json({
-            error: error,
-            method: "put"
+            "error": error,
+            "method": "put"
         });
     }
 }

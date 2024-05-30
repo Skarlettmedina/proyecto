@@ -26,8 +26,76 @@
   <![endif]-->
 
   <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    
+<style>
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table, th, td {
+    border: 1px solid #7b0e82;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+
+}
+
+th {
+    background-color: #e18dec;
+}
+
+tr {
+    background-color: #f7dcf3;
+}
+
+tr:hover {
+    background-color: white;
+}
+
+@media screen and (max-width: 600px) {
+table, th, td, body{
+    border: 1px solid #7b0e82;
+    align-items: center;
+    
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+
+}
+
+th {
+    background-color: #e18dec;
+}
+
+tr {
+    background-color: #f7dcf3;
+}
+
+tr:hover {
+    background-color: white;
+}
+}
+
+
+
+</style>
 </head>
+
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
@@ -59,10 +127,9 @@
             </a>
             <ul class="dropdown-menu">
               <!-- Menu Footer-->
-              <li class="user-footer">
+              <li class="user-footer"><i class="fa fa-fw fa-power-off"></i>
                 <div class="pull-right">
                   <button onclick="salirUsuario()" class="btn btn-danger btn-flat">Salir</button>
-
                 </div>
               </li>
             </ul>
@@ -74,20 +141,68 @@
 
   <!-- =============================================== -->
 
-  <!-- Left side column. contains the sidebar -->
   <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-      <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header"></li>
-        <li><a href="/registrar"><i class="fa fa-user"></i> <span>Crear Usuario</span></a></li>
-        <li><a href="/usuario"><i class="fa fa-user"></i> <span>Listar Usuario</span></a></li>
-        <li><a href="/productos"><i class="fa fa-user"></i> <span>Listar Productos</span></a></li>
-        <li><a href="/factura"><i class="fa fa-user"></i> <span>Listar factura</span></a></li>
-        <li><a href="/hpago"><i class="fa fa-user"></i> <span>Listar Pagos</span></a></li>
+        
+        <li class="treeview active menu-open">
+          <a href="#">
+            <i class="fa fa-fw fa-hand-pointer-o"></i>
+            <span>Inicio</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu" style="">
+            <li><a href="/dash"><i class="fa fa-fw fa-hand-peace-o"></i> <span>Dash</span></a></li>
+          </ul>
+        </li>
 
+        <!-- Contenedor del Gestor de Usuarios -->
+        <li class="treeview active menu-open">
+          <a href="#">
+            <i class="fa fa-user"></i> 
+            <span>Gestor de Usuarios</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu" style="">
+            <li><a href="/registrar"><i class="fa fa-fw fa-user-plus"></i> <span>Crear Usuario</span></a></li>
+            <li><a href="/usuario"><i class="fa fa-fw fa-users"></i> <span>Listar Usuario</span></a></li>
+          </ul>
+        </li>
 
+        <!-- Contenedor del Gestor de Productos -->
+        <li class="treeview active menu-open">
+          <a href="#">
+            <i class="fa fa-fw fa-cubes"></i>
+            <span>Gestor de Productos</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu" style="">
+            <li><a href="/registrarProductos"><i class="fa fa-fw fa-star"></i> <span>Crear Producto</span></a></li>
+            <li><a href="/productos"><i class="fa fa-fw fa-star"></i> <span>Listar Productos</span></a></li>
+          </ul>
+        </li>
+
+      
+        <li class="treeview active menu-open">
+          <a href="#">
+            <i class="fa fa-fw fa-cubes"></i>
+            <span>Facturación</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu" style="">
+            <li><a href="/factura"><i class="fa fa-user"></i> <span>Listar factura</span></a></li>
+            <li><a href="/hpago"><i class="fa fa-user"></i> <span>Listar Pagos</span></a></li>
+          </ul>
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -96,3 +211,4 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+    

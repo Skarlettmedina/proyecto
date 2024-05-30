@@ -1,4 +1,4 @@
-const eliminarRegistro = async (event) => {
+const eliminarProducto = async (event) => {
     try {
         const result = await Swal.fire({
             title: "¿Estás seguro?",
@@ -11,38 +11,29 @@ const eliminarRegistro = async (event) => {
 
         });
         if (result.isConfirmed) {
-            if (borrar(event)) {
+            if (borrarProducto(event)) {
                 await Swal.fire({
                     title: "Eliminado!",
                     text: "El registro ha sido eliminado",
                     icon: "success"
                 });
-                window.location.href="/usuario";
+                window.location.href="/productos";
             } else {
                 console.log("no lo mostró verdadero");
             }
         }
     } catch (error) {
-        console.log("Error al eliminar el registro", error);
+        console.log("Error al borrar el registro", error);
     }
 };
+//Para Registrar un nuevo producto
+const registrarProductos = () => {
+    const nombrep = document.getElementById('nombrep').value;
+    const color = document.getElementById('color').value;
+    const precio = document.getElementById('precio').value;
+console.log(registrarProductos);
 
-
-//Para salir de la aplicación
-const salirUsuario = () => {
-    document.cookie = "token=";
-    window.location.href = "/salir"
-}
-//Para Registrar un nuevo Usuario
-const registrarUsuario = () => {
-    const usuario = document.getElementById('usuario').value;
-    const email = document.getElementById('email').value;
-    const contrasena = document.getElementById('contrasena').value;
-    const roles = document.getElementById('roles').value;
-
-
-
-    const url = "http://localhost:9000/api/usuario"
+    const url = "http://localhost:9000/api/productos"
 
     let token = "";
     const cookieToken = document.cookie;
@@ -70,11 +61,10 @@ const registrarUsuario = () => {
     const options = {
         method: "POST",
         body: JSON.stringify({
-            "idusuario": null,
-            usuario,
-            email,
-            contrasena,
-            roles
+            "idproducto": null,
+            nombrep,
+            color,
+            precio
         }),
         headers
     }
@@ -88,30 +78,26 @@ const registrarUsuario = () => {
             alert("Error al guardar registro", error);
         })
 }
-//Cargar pagina cuando edite un usuario
-const cargarUsuario = (event) => {
+//Cargar pagina cuando edite un producto
+const cargarProducto = (event) => {
     console.log(event.target.parentElement.parentElement.children[0].innerHTML);
 
 
-    document.getElementById('idusuario').value = event.target.parentElement.parentElement.children[0].innerHTML;
-    document.getElementById('usuario').value = event.target.parentElement.parentElement.children[1].innerHTML;
-    document.getElementById('email').value = event.target.parentElement.parentElement.children[2].innerHTML;
-    document.getElementById('contrasena').value = event.target.parentElement.parentElement.children[3].innerHTML;
-    document.getElementById('roles').value = event.target.parentElement.parentElement.children[4].innerHTML;
-
+    document.getElementById('idproducto').value = event.target.parentElement.parentElement.children[0].innerHTML;
+    document.getElementById('nombrep').value = event.target.parentElement.parentElement.children[1].innerHTML;
+    document.getElementById('color').value = event.target.parentElement.parentElement.children[2].innerHTML;
+    document.getElementById('precio').value = event.target.parentElement.parentElement.children[3].innerHTML;
 }
 
-//Para modificar un Registro
-const modificarUsuario = () => {
-    const idusuario = document.getElementById('idusuario').value;
-    const usuario = document.getElementById('usuario').value;
-    const email = document.getElementById('email').value;
-    const contrasena = document.getElementById('contrasena').value;
-    const roles = document.getElementById('roles').value;
+//Para modificar un producto
+const modificarProducto = () => {
+    const idproducto = document.getElementById('idproducto').value;
+    const nombrep = document.getElementById('nombrep').value;
+    const color = document.getElementById('color').value;
+    const precio = document.getElementById('precio').value;
 
 
-
-    const url = "http://localhost:9000/api/usuario"
+    const url = "http://localhost:9000/api/productos"
     let token = "";
     const cookieToken = document.cookie;
 
@@ -131,7 +117,6 @@ const modificarUsuario = () => {
         alert("Debe registrarse nuevamente");
         return
     }
-    
     const headers = {
         'x-acces-token': token,
         'Content-Type': 'application/json'
@@ -139,11 +124,10 @@ const modificarUsuario = () => {
     const options = {
         method: "PUT",
         body: JSON.stringify({
-            "idusuario": idusuario,
-            usuario,
-            email,
-            contrasena,
-            roles
+            "idproducto": idproducto,
+            nombrep,
+            color,
+            precio
         }),
         headers
     }
@@ -157,8 +141,8 @@ const modificarUsuario = () => {
             alert("Error al guardar registro", error);
         })
 }
-//Para que funcione el borrar
-const borrar = async (event) => {
+//Para que funcione 
+const borrarProducto = async (event) => {
     let codigo = event.target.parentElement.parentElement.children[0].innerHTML;
 
     let token = "";
@@ -174,45 +158,44 @@ const borrar = async (event) => {
         });
     } else {
         alert("Debe registrarse nuevamente");
-        return false;
+        return
     }
-
-    if (token === "") {
+    if (token == "") {
         alert("Debe registrarse nuevamente");
-        return false;
+        return
     }
-
     const headers = {
         'x-acces-token': token,
         'Content-Type': 'application/json'
     };
-
-    const url = "http://localhost:9000/api/usuario";
-    const option = {
-        method: "DELETE",
-        body: JSON.stringify({ "idusuario": codigo }),
+    const options = {
+        method: "PUT",
+        body: JSON.stringify({
+            "idproducto": idproducto,
+            nombrep,
+            color,
+            precio
+        }),
         headers
-    };
-
+    }    
     let retorno = false;
 
-    try {
-        console.log("1");
-        const response = await fetch(url, option);
-        console.log("2");
-        const data = await response.json();
-        console.log("3");
-        if (data.respuesta) {
-            console.log(data.respuesta);
-            retorno = true;
-        }else{
-            console.log("4");
-        }
-    } catch (error) {
-        console.log("Error en la petición:", error);
+    const url = "http://localhost:9000/api/productos";
+    const option = {
+        method: "DELETE",
+        body: JSON.stringify({ "idproducto": codigo }),
+        headers
     }
+    await fetch(url, option)
+        .then(res => res.json())
+        .then(data =>{
+            if (data.respuesta){
+                console.log(data.respuesta);
+                retorno = true
+            }
+        })
+        .catch(error => alert(error))
+        console.log(retorno);
 
-    console.log("Retorno:", retorno);
-    return retorno;
-};
-
+        return retorno;
+}
