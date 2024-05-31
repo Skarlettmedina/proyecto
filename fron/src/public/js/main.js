@@ -137,6 +137,7 @@ const modificarUsuario = () => {
         'Content-Type': 'application/json'
     };
     const options = {
+        
         method: "PUT",
         body: JSON.stringify({
             "idusuario": idusuario,
@@ -215,4 +216,14 @@ const borrar = async (event) => {
     console.log("Retorno:", retorno);
     return retorno;
 };
+const reporte = (event)=>{
+    const usuario = event.target.parentElement.parentElement.children[1].innerHTML;
+    const email = event.target.parentElement.parentElement.children[2].innerHTML;
+    const roles = event.target.parentElement.parentElement.children[4].innerHTML;
+    const url= `/reporte?
+    usuario=${usuario}&
+    email=${email}&
+    roles=${roles}`;
 
+    window.open(url);
+}

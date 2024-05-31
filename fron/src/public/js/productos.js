@@ -78,26 +78,23 @@ console.log(registrarProductos);
             alert("Error al guardar registro", error);
         })
 }
-//Cargar pagina cuando edite un producto
-const cargarProducto = (event) => {
-    console.log(event.target.parentElement.parentElement.children[0].innerHTML);
-
-
-    document.getElementById('idproducto').value = event.target.parentElement.parentElement.children[0].innerHTML;
-    document.getElementById('nombrep').value = event.target.parentElement.parentElement.children[1].innerHTML;
-    document.getElementById('color').value = event.target.parentElement.parentElement.children[2].innerHTML;
-    document.getElementById('precio').value = event.target.parentElement.parentElement.children[3].innerHTML;
-}
 
 //Para modificar un producto
-const modificarProducto = () => {
+function cargarProducto(id, nombre, color, precio) {
+    document.getElementById('idproducto').value = id;
+    document.getElementById('nombrep').value = nombre;
+    document.getElementById('color').value = color;
+    document.getElementById('precio').value = precio;
+}
+
+// Función para modificar el producto
+function modificarProducto() {
     const idproducto = document.getElementById('idproducto').value;
     const nombrep = document.getElementById('nombrep').value;
     const color = document.getElementById('color').value;
     const precio = document.getElementById('precio').value;
 
-
-    const url = "http://localhost:9000/api/productos"
+    const url = "http://localhost:9000/api/productos";
     let token = "";
     const cookieToken = document.cookie;
 
@@ -111,36 +108,45 @@ const modificarProducto = () => {
         });
     } else {
         alert("Debe registrarse nuevamente");
-        return
+        return;
     }
+
     if (token == "") {
         alert("Debe registrarse nuevamente");
-        return
+        return;
     }
+
     const headers = {
         'x-acces-token': token,
         'Content-Type': 'application/json'
     };
+
     const options = {
         method: "PUT",
         body: JSON.stringify({
-            "idproducto": idproducto,
+            idproducto,
             nombrep,
             color,
             precio
         }),
         headers
-    }
+    };
+
     fetch(url, options)
         .then(res => res.json())
         .then(data => {
-            alert('Registro guardado' + data);
-            console.log(data);
+            if (data.error) {
+                alert(data.error);
+            } else {
+                alert('Registro guardado: ' + JSON.stringify(data));
+                location.reload(); // Recarga la página para ver los cambios
+            }
         })
         .catch(error => {
-            alert("Error al guardar registro", error);
-        })
+            alert("Error al guardar registro: " + error.message);
+        });
 }
+
 //Para que funcione 
 const borrarProducto = async (event) => {
     let codigo = event.target.parentElement.parentElement.children[0].innerHTML;
@@ -158,44 +164,44 @@ const borrarProducto = async (event) => {
         });
     } else {
         alert("Debe registrarse nuevamente");
-        return
+        return false;
     }
-    if (token == "") {
+
+    if (token === "") {
         alert("Debe registrarse nuevamente");
-        return
+        return false;
     }
+
     const headers = {
         'x-acces-token': token,
         'Content-Type': 'application/json'
     };
-    const options = {
-        method: "PUT",
-        body: JSON.stringify({
-            "idproducto": idproducto,
-            nombrep,
-            color,
-            precio
-        }),
-        headers
-    }    
-    let retorno = false;
 
     const url = "http://localhost:9000/api/productos";
     const option = {
         method: "DELETE",
-        body: JSON.stringify({ "idproducto": codigo }),
+        body: JSON.stringify({ "idproductos": codigo }),
         headers
-    }
-    await fetch(url, option)
-        .then(res => res.json())
-        .then(data =>{
-            if (data.respuesta){
-                console.log(data.respuesta);
-                retorno = true
-            }
-        })
-        .catch(error => alert(error))
-        console.log(retorno);
+    };
 
-        return retorno;
-}
+    let retorno = false;
+
+    try {
+        console.log("1");
+        const response = await fetch(url, option);
+        console.log("2");
+        const data = await response.json();
+        console.log("3");
+        if (data.respuesta) {
+            console.log(data.respuesta);
+            retorno = true;
+        }else{
+            console.log("4");
+        }
+    } catch (error) {
+        console.log("Error en la petición:", error);
+    }
+
+    console.log("Retorno:", retorno);
+    return retorno;
+};
