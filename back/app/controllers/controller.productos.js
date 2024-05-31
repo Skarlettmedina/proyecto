@@ -1,4 +1,7 @@
+
+import { query } from "express";
 import { pool } from "../config/db_mysql.js";
+import {tokenSing} from "../middlewares/middlewares.usuario.js";
 
 export const crearProductos = async (req, res) => {
     let info = req.body;
