@@ -2,30 +2,36 @@ const eliminarProducto = async (event) => {
     try {
         const result = await Swal.fire({
             title: "¿Estás seguro?",
-            text: "Esto no se revertira!",
+            text: "Esto no se puede revertir!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Sí, estoy seguro!"
-
         });
+
         if (result.isConfirmed) {
-            if (borrarProducto(event)) {
+            const borradoExitoso = await borrarProducto(event);
+            if (borradoExitoso) {
                 await Swal.fire({
                     title: "Eliminado!",
                     text: "El registro ha sido eliminado",
                     icon: "success"
                 });
-                window.location.href="/productos";
+                window.location.href = "/productos";
             } else {
-                console.log("no lo mostró verdadero");
+                Swal.fire({
+                    title: "Error!",
+                    text: "No se pudo eliminar el registro",
+                    icon: "error"
+                });
             }
         }
     } catch (error) {
         console.log("Error al borrar el registro", error);
     }
 };
+
 //Para Registrar un nuevo producto
 const registrarProductos = () => {
     const nombrep = document.getElementById('nombrep').value;
@@ -149,7 +155,7 @@ function modificarProducto() {
 
 //Para que funcione 
 const borrarProducto = async (event) => {
-    let codigo = event.target.parentElement.parentElement.children[0].innerHTML;
+    const codigo = event.target.parentElement.parentElement.children[0].innerHTML;
 
     let token = "";
     const cookieToken = document.cookie;
@@ -173,35 +179,28 @@ const borrarProducto = async (event) => {
     }
 
     const headers = {
-        'x-acces-token': token,
+        'x-access-token': token,
         'Content-Type': 'application/json'
     };
 
-    const url = "http://localhost:9000/api/productos";
-    const option = {
+    const url = `http://localhost:9000/api/productos/${codigo}`; // Cambia a la URL correcta
+    const options = {
         method: "DELETE",
-        body: JSON.stringify({ "idproductos": codigo }),
         headers
     };
 
-    let retorno = false;
-
     try {
-        console.log("1");
-        const response = await fetch(url, option);
-        console.log("2");
+        const response = await fetch(url, options);
         const data = await response.json();
-        console.log("3");
-        if (data.respuesta) {
-            console.log(data.respuesta);
-            retorno = true;
-        }else{
-            console.log("4");
+
+        if (response.ok) {
+            return true;
+        } else {
+            console.log("Error en la respuesta del servidor:", data.message || "Error desconocido");
+            return false;
         }
     } catch (error) {
         console.log("Error en la petición:", error);
+        return false;
     }
-
-    console.log("Retorno:", retorno);
-    return retorno;
 };
