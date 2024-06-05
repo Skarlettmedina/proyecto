@@ -38,26 +38,28 @@
                       <table border="1">
                           <thead>
                               <tr>
-                                <th>N° Productos</th>
                                 <th hidden>Id</th>
+                                <th>N° Productos</th>
                                 <th>Nombre</th>
                                 <th>Color</th>
                                 <th>Precio</th>
+                                <th>Stock</th>
                                 <th>Opciones</th>
                               </tr>
                           </thead>
                           <tbody>
                               <% data.forEach(function(registro) { %>
-                                <% let contadorp = 1; %>
+                                <% let contadorp = 1 ; %>
                               <tr>
-                                <td><%= contadorp %></td> <!-- Mostrando el contador -->
                                 <td data-label="Id" hidden><%= registro.idproducto %></td>
+                                <td><%= contadorp %></td> <!-- Mostrando el contador -->
                                 <td data-label="Nombre"><%= registro.nombrep %></td>
                                 <td data-label="Color"><%= registro.color %></td>
                                 <td data-label="Precio"><%= registro.precio %></td>
+                                <td data-label="stock"><%= registro.stock %></td>
                                 <td data-label="Opciones">
                                     <button class="btn btn bg-purple" data-toggle="modal" data-target="#modal-warning" onclick="cargarProducto(event);">Modificar</button>
-                                    <button class="btn btn bg-navy" id="elimina" onclick="eliminarProducto(event);">Eliminar</button>
+                                    <button class="btn btn bg-navy" id="elimina" onclick="borrarProducto(event);">Eliminar</button>
                                   </td>
                                 </tr>          
                                 <% contadorp++; %>
@@ -106,14 +108,14 @@
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-outline" onclick="modificarProducto();">Guardar</button>
+                  <button type="button" class="btn btn-outline" onclick="eliminarProducto();">Guardar</button>
               </div>
           </div>
       </div>
   </div>
   
   <script src="./js/productos.js"></script>
-  
+  <script src="./js/main.js"></script>
   <%- include("partials/partials.dash.footer.ejs") %>
         
   

@@ -38,8 +38,8 @@
                     <table border="1">
                         <thead>
                             <tr>
-                                <th>N° Usuarios</th>
                                 <th hidden>Id</th>
+                                <th>N° Usuarios</th>
                                 <th>Usuario</th>
                                 <th>Email</th>
                                 <th>Contrasena</th>
@@ -51,8 +51,8 @@
                             <% let contador = 1; %>
                             <% data.forEach(function(registro) { %>
                             <tr>
-                                <td><%= contador %></td> <!-- Mostrando el contador -->
                                 <td data-label="Id" hidden><%= registro.idusuario %></td>
+                                <td><%= contador %></td> <!-- Mostrando el contador -->
                                 <td data-label="Usuario"><%= registro.usuario %></td>
                                 <td data-label="Email"><%= registro.email %></td>
                                 <td data-label="Contrasena"><%= registro.contrasena %></td>

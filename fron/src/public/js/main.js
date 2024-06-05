@@ -94,10 +94,10 @@ const cargarUsuario = (event) => {
 
 
     document.getElementById('idusuario').value = event.target.parentElement.parentElement.children[0].innerHTML;
-    document.getElementById('usuario').value = event.target.parentElement.parentElement.children[1].innerHTML;
-    document.getElementById('email').value = event.target.parentElement.parentElement.children[2].innerHTML;
-    document.getElementById('contrasena').value = event.target.parentElement.parentElement.children[3].innerHTML;
-    document.getElementById('roles').value = event.target.parentElement.parentElement.children[4].innerHTML;
+    document.getElementById('usuario').value = event.target.parentElement.parentElement.children[2].innerHTML;
+    document.getElementById('email').value = event.target.parentElement.parentElement.children[3].innerHTML;
+    document.getElementById('contrasena').value = event.target.parentElement.parentElement.children[4].innerHTML;
+    document.getElementById('roles').value = event.target.parentElement.parentElement.children[5].innerHTML;
 
 }
 
@@ -217,9 +217,9 @@ const borrar = async (event) => {
     return retorno;
 };
 const reporte = (event)=>{
-    const usuario = event.target.parentElement.parentElement.children[1].innerHTML;
-    const email = event.target.parentElement.parentElement.children[2].innerHTML;
-    const roles = event.target.parentElement.parentElement.children[4].innerHTML;
+    const usuario = event.target.parentElement.parentElement.children[2].innerHTML;
+    const email = event.target.parentElement.parentElement.children[3].innerHTML;
+    const roles = event.target.parentElement.parentElement.children[5].innerHTML;
     const url= `/reporte?
     usuario=${usuario}&
     email=${email}&
