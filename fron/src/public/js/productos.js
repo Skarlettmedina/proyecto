@@ -65,7 +65,7 @@ console.log(registrarProductos);
     const options = {
         method: "POST",
         body: JSON.stringify({
-            "idproducto": idproducto,
+            "idproducto": null,
             nombrep,
             color,
             precio,

@@ -59,7 +59,7 @@
                                 <td data-label="stock"><%= registro.stock %></td>
                                 <td data-label="Opciones">
                                     <button class="btn btn bg-purple" data-toggle="modal" data-target="#modal-warning" onclick="cargarProducto(event);">Modificar</button>
-                                    <button class="btn btn bg-navy" id="elimina" onclick="borrarProducto(event);">Eliminar</button>
+                                    <button class="btn btn bg-navy" id="elimina" onclick="eliminarProducto(event);">Eliminar</button>
                                   </td>
                                 </tr>          
                                 <% contadorp++; %>
@@ -108,7 +108,7 @@
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-outline" onclick="eliminarProducto();">Guardar</button>
+                  <button type="button" class="btn btn-outline" onclick="modificarProducto();">Guardar</button>
               </div>
           </div>
       </div>
