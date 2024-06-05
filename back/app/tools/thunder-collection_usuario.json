@@ -1,0 +1,59 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "usuario",
+    "collectionId": "b6d9a4bf-cd5f-448f-98db-e0594541d28c",
+    "dateExported": "2024-04-26T21:11:37.496Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "d3bc281a-97e4-45dc-aee0-75cf439b20ce",
+            "colId": "b6d9a4bf-cd5f-448f-98db-e0594541d28c",
+            "containerId": "",
+            "name": "crearUsuario",
+            "url": "http://localhost:9000/api/usuario",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-04-26T20:11:39.417Z",
+            "modified": "2024-04-26T20:15:52.775Z",
+            "headers": []
+        },
+        {
+            "_id": "f8e6301e-fb1c-415d-8d14-a56e79a0550a",
+            "colId": "b6d9a4bf-cd5f-448f-98db-e0594541d28c",
+            "containerId": "",
+            "name": "mostrarUsuario",
+            "url": "http://localhost:9000/api/usuario",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-04-26T20:16:04.368Z",
+            "modified": "2024-04-26T20:16:08.401Z",
+            "headers": []
+        },
+        {
+            "_id": "acdd143d-4219-420e-990c-25f18eaaaad7",
+            "colId": "b6d9a4bf-cd5f-448f-98db-e0594541d28c",
+            "containerId": "",
+            "name": "actualizarUsuario",
+            "url": "http://localhost:9000/api/usuario",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-04-26T20:16:21.496Z",
+            "modified": "2024-04-26T20:16:34.818Z",
+            "headers": []
+        },
+        {
+            "_id": "8aa9c8ac-9314-48e2-a383-8e58d18c1d96",
+            "colId": "b6d9a4bf-cd5f-448f-98db-e0594541d28c",
+            "containerId": "",
+            "name": "eliminarUsuario",
+            "url": "http://localhost:9000/api/usuario",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2024-04-26T20:16:50.856Z",
+            "modified": "2024-04-26T20:16:57.216Z",
+            "headers": []
+        }
+    ],
+    "ref": "0eBrdjpMrbss8fAEaxxMjAwXU3TwL7iwf7Xb7emjLSsK6xygpTCdaIQXFqxmxQDz97RUD-OeZOEkdxp-uuGC0A"
+}

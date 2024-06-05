@@ -1,0 +1,134 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+   
+</head>
+<body> -->
+
+<!-- views/usuario.ejs -->
+<%- include("partials/partials.dash.header.ejs", { datos: datos, data: data }) %>
+
+<section class="content">
+    <div class="box">
+        <div class="box-header with-border bg-navy">
+            <h3 class="box-title">Lista de Usuarios</h3>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body">
+            <div class="tableusuario">
+                <div class="table-responsive">
+                    <div class="info-box bg-purple">
+                        <span class="info-box-icon"><i class="fa fa-users"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Total de Usuarios</span>
+                            <span class="info-box-number"><%= data.length %></span>
+                        </div>
+                    </div>
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>N° Usuarios</th>
+                                <th hidden>Id</th>
+                                <th>Usuario</th>
+                                <th>Email</th>
+                                <th>Contrasena</th>
+                                <th>Roles</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% let contador = 1; %>
+                            <% data.forEach(function(registro) { %>
+                            <tr>
+                                <td><%= contador %></td> <!-- Mostrando el contador -->
+                                <td data-label="Id" hidden><%= registro.idusuario %></td>
+                                <td data-label="Usuario"><%= registro.usuario %></td>
+                                <td data-label="Email"><%= registro.email %></td>
+                                <td data-label="Contrasena"><%= registro.contrasena %></td>
+                                <td data-label="Roles"><%= registro.roles %></td>
+                                <td data-label="Opciones">
+                                    <button class="btn btn bg-purple" data-toggle="modal" data-target="#modal-warning" onclick="cargarUsuario(event);">Modificar</button>
+                                    <button class="btn btn bg-navy" id="eliminar" onclick="eliminarRegistro(event);">Eliminar</button>
+                                </td>
+                            </tr>
+                            <% contador++; %>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+                <input type="hidden" id="idusuario">
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="control-sidebar-bg"></div>
+
+<div class="modal modal-warning fade" id="modal-warning">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Warning Modal</h4>
+            </div>
+            <div class="modal-body">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="usuario">Usuario</label>
+                                <input type="text" id="usuario" class="form-control" placeholder="Insertar Usuario" autocomplete="usuario">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Correo</label>
+                                <input type="email" class="form-control" id="email" placeholder="Insertar Correo" autocomplete="email">
+                            </div>
+                            <div class="form-group">
+                              <label for="roles">Asignar Rol</label>
+                              <select class="opciones" input type="text" class="form-control" id="roles">
+                                <option>Administrador</option>
+                                <option>Usuario</option>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="contrasena">Contraseña</label>
+                                <input type="password" class="form-control" id="contrasena" placeholder="Insertar Contraseña" autocomplete="contrasena">
+                            </div>
+                            <div class="form-group">
+                                <label for="vcontrasena">Verificar Contraseña</label>
+                                <input type="password" class="form-control" id="vcontrasena" placeholder="Verificar Contraseña" autocomplete="vcontrasena">
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-outline" onclick="modificarUsuario();">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="./js/main.js"></script>
+
+<%- include("partials/partials.dash.footer.ejs") %>
+
+<!-- </body>
+</html> -->

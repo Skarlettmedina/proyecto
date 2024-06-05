@@ -1,0 +1,60 @@
+</div>
+<!-- /.content-wrapper -->
+
+
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 2.4.0
+    </div>
+    <strong>Copyright &copy; 2024 <a href="https://adminlte.io">Skarlett</a>.</strong> Todos los derechos
+    reservados.
+  </footer>
+
+  
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- Sweetalert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+<script src="../dash/bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../dash/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="../dash/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../dash/bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../dash/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../dash/dist/js/demo.js"></script>
+<script>
+  $(document).ready(function () {
+    $('.sidebar-menu').tree()
+  })
+  document.addEventListener("DOMContentLoaded", () => {
+  // Obtener la URL actual
+  const currentUrl = window.location.href;
+  // Obtener todos los enlaces del menú
+  const menuLinks = document.querySelectorAll('.sidebar-menu a');
+  // Iterar sobre los enlaces del menú
+  menuLinks.forEach(link => {
+    // Comparar la URL actual con el atributo "href" de cada enlace
+    if (currentUrl.includes(link.getAttribute('href'))) {
+      // Agregar la clase "active" al elemento padre del enlace
+      link.parentNode.classList.add('active');
+      
+      // Abrir el árbol del menú si el elemento padre tiene la clase "treeview"
+      const treeviewParent = link.closest('.treeview');
+      if (treeviewParent) {
+        treeviewParent.classList.add('active', 'menu-open');
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>

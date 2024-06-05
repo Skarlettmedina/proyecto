@@ -1,0 +1,52 @@
+<%- include("partials/partials.dash.header.ejs", {datos : datos})  %>
+
+<section class="content">
+
+    <!-- Default box -->
+    <div class="box">
+      <div class="box-header with-border bg-navy">
+        <h3 class="box-title">Crear Producto</h3>
+
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse">
+            <i class="fa fa-minus"></i></button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="" data-original-title="Remove">
+            <i class="fa fa-times"></i></button>
+        </div>
+      </div>
+      <div class="box-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Productos</label>
+                    <input type="text" autocomplete="producto" id="nombrep" class="form-control" placeholder="Insertar Producto">
+                  </div>
+                  <div class="form-group">
+                    <label for="color">Color</label>
+                    <input type="text" class="form-control" autocomplete="color" id="color" placeholder="Insertar Color">
+                  </div>
+                
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="precio">Precio</label>
+                    <input type="number" class="form-control" name="precio" id="precio" placeholder="Insertar Precio">
+                  </div>
+              </div>
+        </div>
+      </div>
+      
+      <!-- /.box-body -->
+      <div class="box-footer">
+        <button class="btn btn-app bg-purple" onclick="registrarProductos();">
+            <i class="fa fa-save"></i> Guardar
+        </button>
+      </div>
+      <!-- /.box-footer-->
+    </div>
+    <!-- /.box -->
+
+  </section>
+
+   <script src="./js/productos.js"></script> 
+<%- include("partials/partials.dash.footer.ejs")  %>

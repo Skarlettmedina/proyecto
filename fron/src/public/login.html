@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CrochetSY</title>
+	<link rel="stylesheet" type="text/css" href="./css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./js/alertifyjs/css/alertify.min.css">
+    <link rel="stylesheet" href="./js/alertifyjs/css/themes/bootstrap.min.css">
+</head>
+
+<body>
+	<div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
+	<div class="redes">
+			<i class='fab fa-facebook' style='font-size:24px'></i>
+		</div>
+		<div class="signup">
+			<!-- <form method="post" action="#"> -->
+				<label for="chk" aria-hidden="true">Iniciar Sesión</label>
+		
+				<input type="email" name="email" placeholder="Email" required id="email" autocomplete="email"> 
+				<input type="password" name="pswd" placeholder="Contraseña" required id="contrasena" autocomplete="current-password"> 
+				<button value="Login" onclick="logueese()">Iniciar Sesión</button>
+			<!-- </form> -->
+		</div>
+	
+		<div class="login">
+			<form>
+				<label for="chk" aria-hidden="true">Registro</label>
+				<input type="email" name="email" placeholder="Email" required autocomplete="email">
+				<input type="password" name="pswd" placeholder="Contraseña" required autocomplete="new-password">
+				<button value="Login" onclick="registrese()">Registrarse</button>
+			</form>
+		</div>
+	</div>
+	
+	</div>
+    <script src="./js/alertifyjs/alertify.min.js"></script>
+    <script src="./js/login.js"></script>
+</body>
+</html>

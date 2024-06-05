@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>crochetsy</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="../dash/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../dash/bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="../dash/bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../dash/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="../dash/dist/css/skins/_all-skins.min.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Font -->
+    
+<style>
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table, th, td {
+    border: 1px solid #7b0e82;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+
+}
+
+th {
+    background-color: #e18dec;
+}
+
+tr {
+    background-color: #f7dcf3;
+}
+
+tr:hover {
+    background-color: white;
+}
+
+@media screen and (max-width: 600px) {
+table, th, td, body{
+    border: 1px solid #7b0e82;
+    align-items: center;
+    
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+
+}
+
+th {
+    background-color: #e18dec;
+}
+
+tr {
+    background-color: #f7dcf3;
+}
+
+tr:hover {
+    background-color: white;
+}
+}
+</style>
+<style>
+  .sidebar-header {
+  text-align: center;
+  padding: 20px 0;
+}
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+}
+.sidebar-menu li {
+  position: relative;
+  padding: 10px;
+}
+.sidebar-menu li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+}
+.sidebar-menu li a:hover,
+.sidebar-menu li:hover > a {
+  background-color: #af83f1;
+}
+.sidebar-menu li.active > a {
+  background-color: #af83f1;
+}
+.treeview-menu {
+  display: none;
+  list-style: none;
+  padding: 0;
+  padding-left: 20px;
+}
+.treeview.active > .treeview-menu {
+  display: block;
+}
+.treeview.active > a {
+  background-color: #a15353;
+}
+</style>
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="../dash/index2.html" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>C</b>SY</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>Crochet</b>SY</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="../dash/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <span class="hidden-xs"><%= datos.email %></span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- Menu Footer-->
+              <li class="user-footer"><i class="fa fa-fw fa-power-off"></i>
+                <div class="pull-right">
+                  <button onclick="salirUsuario()" class="btn btn-danger btn-flat">Salir</button>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- =============================================== -->
+
+  <aside class="main-sidebar">
+    <section class="sidebar">
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header"></li>
+        
+        <li class="treeview active menu-open">
+          <a href="#">
+            <i class="fa fa-fw fa-hand-pointer-o"></i>
+            <span>Inicio</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/dash"><i class="fa fa-fw fa-hand-peace-o"></i> <span>Dash</span></a></li>
+          </ul>
+        </li>
+
+        <!-- Contenedor del Gestor de Usuarios -->
+        <li class="treeview active menu-open">
+          <a href="#">
+            <i class="fa fa-user"></i> 
+            <span>Gestor de Usuarios</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/registrar"><i class="fa fa-fw fa-user-plus"></i> <span>Crear Usuario</span></a></li>
+            <li><a href="/usuario"><i class="fa fa-fw fa-users"></i> <span>Listar Usuario</span></a></li>
+          </ul>
+        </li>
+
+        <!-- Contenedor del Gestor de Productos -->
+        <li class="treeview active menu-open">
+          <a href="#">
+            <i class="fa fa-fw fa-cubes"></i>
+            <span>Gestor de Productos</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/registrarProductos"><i class="fa fa-fw fa-star"></i> <span>Crear Producto</span></a></li>
+            <li><a href="/productos"><i class="fa fa-fw fa-star"></i> <span>Listar Productos</span></a></li>
+          </ul>
+        </li>
+
+      
+        <li class="treeview active menu-open">
+          <a href="#">
+            <i class="fa fa-fw fa-cubes"></i>
+            <span>Facturación</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/factura"><i class="fa fa-user"></i> <span>Listar factura</span></a></li>
+            <li><a href="/hpago"><i class="fa fa-user"></i> <span>Listar Pagos</span></a></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+    <!-- =============================================== -->
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    
