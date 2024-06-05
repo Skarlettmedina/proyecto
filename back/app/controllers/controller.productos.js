@@ -9,9 +9,9 @@ export const crearProductos = async (req, res) => {
     try {
         let resultado = await pool.query(`
         insert into productos(idproducto, 
-            nombrep,color,precio) values (
+            nombrep,color,precio,stock) values (
                     ${info.idproducto},'${info.nombrep}',
-                    '${info.color}','${info.precio}'
+                    '${info.color}','${info.precio}','${info.stock}'
             )
         `);
         if (resultado[0].affectedRows > 0) {
@@ -76,12 +76,12 @@ export const actualizarProductos = async (req, res) => {
 }
 
 export const eliminarProductos = async (req, res) => {
-    let id = req.params.id;
+    let info = req.body;
 
     try {
         let resultado = await pool.query(`
             DELETE FROM productos
-            WHERE idproducto = ${id}
+            WHERE idproducto = ${info.idproducto}
         `);
         if (resultado[0].affectedRows > 0) {
             res.json({
