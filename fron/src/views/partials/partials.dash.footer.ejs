@@ -1,19 +1,17 @@
 </div>
-<!-- /.content-wrapper -->
-
-
 <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
-    </div>
-    <strong>Copyright &copy; 2024 <a href="https://adminlte.io">Skarlett</a>.</strong> Todos los derechos
-    reservados.
-  </footer>
+  <div class="pull-right hidden-xs">
+    <b>Version</b> 1.0.0
+  </div>
+  <strong>Copyright &copy; 2024 <a href="https://adminlte.io">Skarlett</a>.</strong> Todos los derechos
+  reservados.
+  <strong> <a href="https://gestor-inventarios-documentacion.vercel.app">Documentacion</a></strong>
+</footer>
 
-  
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
+
+<!-- Add the sidebar's background. This div must be placed
+     immediately after the control sidebar -->
+<div class="control-sidebar-bg"></div>
 </div>
 <!-- Sweetalert -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -31,11 +29,14 @@
 <script src="../dash/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../dash/dist/js/demo.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
 <script>
-  $(document).ready(function () {
-    $('.sidebar-menu').tree()
-  })
-  document.addEventListener("DOMContentLoaded", () => {
+$(document).ready(function () {
+  $('.sidebar-menu').tree();
+  validarRolAdministrador(); // Llamar a la función aquí
+});
+
+document.addEventListener("DOMContentLoaded", () => {
   // Obtener la URL actual
   const currentUrl = window.location.href;
   // Obtener todos los enlaces del menú
@@ -55,6 +56,71 @@
     }
   });
 });
+
+function obtenerToken() {
+    // Obtener todas las cookies del navegador
+    const cookies = document.cookie.split(';');
+    
+    // Buscar la cookie que contiene el token
+    let token = '';
+    cookies.forEach(cookie => {
+        const [nombre, valor] = cookie.split('=');
+        if (nombre.trim() === 'token') {
+            token = valor;
+        }
+    });
+
+    return token;
+}
+
+function obtenerRolesDesdeToken(token) {
+  try {
+    // Decodificar el token para obtener la información de roles
+    const decodedToken = jwt_decode(token);
+    console.log('Decoded Token:', decodedToken); // Log para verificar el contenido del token decodificado
+    return decodedToken.roles || [];
+  } catch (error) {
+    console.error('Error al decodificar el token:', error);
+    return [];
+  }
+}
+
+function validarRolAdministrador() {
+  // Obtener el token de localStorage
+  const token = obtenerToken();
+
+  // Verificar si el token existe y contiene información de roles
+  if (token) {
+      const roles = obtenerRolesDesdeToken(token);
+      console.log('Roles:', roles); // Log para verificar los roles extraídos del token
+      // Comprobar si el rol de administrador está presente en los roles del usuario
+      const esAdministrador = roles.includes('Administrador');
+
+      // Obtener el elemento li que representa el treeview
+      const treeviewElement = document.querySelector('.treeview.usuarios');
+      const crearProductos = document.querySelector('.crear-productos');
+      const mostrarVenta = document.querySelector('.mostrar-venta');
+
+
+
+
+      // Si el usuario no es administrador, ocultar el elemento
+      if (!esAdministrador) {
+          console.log('Usuario no es administrador. Ocultando opción de Gestor de Usuarios.');
+          if (treeviewElement) {
+              treeviewElement.classList.add('hidden');
+              crearProductos.classList.add('h');
+
+          } else {
+              console.error('Elemento de Gestor de Usuarios no encontrado.');
+          }
+      } else {
+          console.log('Usuario es administrador. Mostrando opción de Gestor de Usuarios.');
+      }
+  } else {
+      console.log('Token no encontrado.');
+  }
+}
 </script>
 </body>
 </html>

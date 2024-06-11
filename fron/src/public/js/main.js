@@ -39,7 +39,11 @@ const registrarUsuario = () => {
     const email = document.getElementById('email').value;
     const contrasena = document.getElementById('contrasena').value;
     const roles = document.getElementById('roles').value;
-
+    const regex = /^[a-zA-Z0–9._-]+@[a-zA-Z0–9.-]+\.[a-zA-Z]{2,4}$/;
+    if (!regex.test(email)) {
+        alert('Email no valido');
+        return
+    }
 
 
     const url = "http://localhost:9000/api/usuario"
@@ -108,7 +112,11 @@ const modificarUsuario = () => {
     const email = document.getElementById('email').value;
     const contrasena = document.getElementById('contrasena').value;
     const roles = document.getElementById('roles').value;
-
+    const regex = /^[a-zA-Z0–9._-]+@[a-zA-Z0–9.-]+\.[a-zA-Z]{2,4}$/;
+    if (!regex.test(email)) {
+        alert('Email no valido');
+        return
+    }
 
 
     const url = "http://localhost:9000/api/usuario"
@@ -216,14 +224,3 @@ const borrar = async (event) => {
     console.log("Retorno:", retorno);
     return retorno;
 };
-const reporte = (event)=>{
-    const usuario = event.target.parentElement.parentElement.children[2].innerHTML;
-    const email = event.target.parentElement.parentElement.children[3].innerHTML;
-    const roles = event.target.parentElement.parentElement.children[5].innerHTML;
-    const url= `/reporte?
-    usuario=${usuario}&
-    email=${email}&
-    roles=${roles}`;
-
-    window.open(url);
-}

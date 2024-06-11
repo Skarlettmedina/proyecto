@@ -126,7 +126,10 @@ tr:hover {
   display: block;
 }
 .treeview.active > a {
-  background-color: #a15353;
+  background-color: #ff00ee;
+}
+.hidden {
+  display: none;
 }
 </style>
 </head>
@@ -195,7 +198,7 @@ tr:hover {
         </li>
 
         <!-- Contenedor del Gestor de Usuarios -->
-        <li class="treeview active menu-open">
+        <li class="treeview active menu-open usuarios">
           <a href="#">
             <i class="fa fa-user"></i> 
             <span>Gestor de Usuarios</span>
@@ -219,31 +222,29 @@ tr:hover {
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/registrarProductos"><i class="fa fa-fw fa-star"></i> <span>Crear Producto</span></a></li>
+            <li class="crear-productos"><a href="/registrarProductos"><i class="fa fa-fw fa-star"></i> <span>Crear Producto</span></a></li>
             <li><a href="/productos"><i class="fa fa-fw fa-star"></i> <span>Listar Productos</span></a></li>
           </ul>
         </li>
 
       
-        <li class="treeview active menu-open">
+        <li class="treeview active menu-open compras">
           <a href="#">
             <i class="fa fa-fw fa-cubes"></i>
-            <span>Facturación</span>
+            <span>Gestor de Ventas</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/factura"><i class="fa fa-user"></i> <span>Listar factura</span></a></li>
-            <li><a href="/hpago"><i class="fa fa-user"></i> <span>Listar Pagos</span></a></li>
+            <li class="crear-productos" ><a href="/compras"><i class="fa fa-fw fa-shopping-basket"></i> <span>Ventas</span></a></li>
+            <li><a href="/detalle"><i class="fa fa-fw fa-shopping-basket"></i> <span>Generar Compra</span></a></li>
+
           </ul>
         </li>
+      
       </ul>
     </section>
-    <!-- /.sidebar -->
   </aside>
-    <!-- =============================================== -->
 
-  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    

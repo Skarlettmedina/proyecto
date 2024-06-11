@@ -15,8 +15,8 @@
   
       <!-- Default box -->
       <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title">Lista de Pagos</h3>
+        <div class="box-header with-border bg-navy" >
+          <h3 class="box-title">Lista de Compras</h3>
   
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -29,19 +29,22 @@
         <div class="box-body">
           <table border="1"">
                 <tr>
-                    <th>idpagos</th>
-                    <th>idfactura</th>
-
+                    <th>idcompras</th>
+                    <th>idusuario</th>
+                    <th>precio</th>
+                    <th>fecha_compra</th>
                </tr>
                <% data.forEach(function(registro){%>
                 <tr>
-                    <td><%= registro.idpagos %></td>
-                    <td><%= registro.idfactura %></td>
+                    <td><%= registro.idcompra %></td>
+                    <td><%= registro.idusuario %></td>
+                    <td><%= registro.precio %></td>
+                    <td><%= registro.fecha_compra %></td>
                 </tr>        
                   
                    <% }) %>
                </table>
-            <input type="hidden" id="idpagos">
+            <input type="hidden" id="idcompra">
         </div>
         <!-- /.box-body -->
       </div>

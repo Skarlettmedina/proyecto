@@ -16,16 +16,18 @@ export const crearUsuario = async(req, res)=>{
         `);
         if (resultado[0].affectedRows > 0){
             res.json({
-                respuesta:"Registro insertado"
+                respuesta:"Registro insertado",
+                code: 1
             });
         }else{
             res.json({
-                respuesta: "No se insertó nada"
+                respuesta: "No se insertó nada",
+                code: 0
             });
         }
     } catch (error) {
         res.json({
-            "error": error,
+            "error": error.message, // Cambiado para incluir el mensaje de error específico
             "method": "post"
         });
     }
@@ -111,37 +113,40 @@ export const eliminarUsuario = async(req, res)=>{
         });
     }
 }
-export const loginUsuario = async(req, res)=>{
+export const loginUsuario = async (req, res) => {
     let email = req.body.email;
     let contrasena = req.body.contrasena;
 
     try {
-        let resultado = await pool.query(`select email from usersa where  email ='${email}' and contrasena ='${contrasena}'
+        let [resultado] = await pool.query(`
+            SELECT idusuario, email, roles FROM usersa 
+            WHERE email ='${email}' AND contrasena ='${contrasena}'
         `);
-        if (resultado [0]==""){
+        let usuario = resultado[0];
+
+        if (!usuario) {
             res.json({
                 respuesta: "Logueo incorrecto",
-                estado:false
+                estado: false
             });
-        }else{
-            let token = tokenSing({
-                email: email,
-                contrasena: contrasena
-                });
-                console.log(token);
+        } else {
+            let token = tokenSing(usuario); // Pasa el objeto usuario directamente a tokenSing
+            console.log(token);
+            res.json({
+                respuesta: "Logueo correcto",
+                estado: true,
+                token: token
+            });
+        }
+    } catch (error) {
+        console.error("Error en la consulta:", error);
         res.json({
-            respuesta: "Logueo correcto",
-            estado: true,
-            token: token
+            error: "Error en la consulta",
+            method: "POST"
         });
     }
-    }catch (error) {
-        res.json({
-            respuesta: "Error en el logueo",
-            type: error
-        })
-    }
 }
+
 export const listarUsuario = async(req, res)=>{
 
     try{

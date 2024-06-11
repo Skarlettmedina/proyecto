@@ -11,15 +11,15 @@ const eliminarProducto = async (event) => {
 
         });
         if (result.isConfirmed) {
-            if (borrarProducto(event)) {
+            if (await borrarProducto(event)) {
                 await Swal.fire({
                     title: "Eliminado!",
                     text: "El registro ha sido eliminado",
                     icon: "success"
                 });
-                window.location.href="/productos";
+                window.location.href = "/productos";
             } else {
-                console.log("no lo mostró verdadero");
+                console.log("No se pudo eliminar el producto");
             }
         }
     } catch (error) {
@@ -27,17 +27,20 @@ const eliminarProducto = async (event) => {
     }
 };
 
+// Para salir de la aplicación
+const salirUsuario = () => {
+    document.cookie = "token=";
+    window.location.href = "/salir";
+};
 
-//Para Registrar un nuevo producto
+// Para registrar un nuevo producto
 const registrarProductos = () => {
     const nombrep = document.getElementById('nombrep').value;
     const color = document.getElementById('color').value;
     const precio = document.getElementById('precio').value;
     const stock = document.getElementById('stock').value;
 
-console.log(registrarProductos);
-
-    const url = "http://localhost:9000/api/productos"
+    const url = "http://localhost:9000/api/productos";
 
     let token = "";
     const cookieToken = document.cookie;
@@ -52,11 +55,11 @@ console.log(registrarProductos);
         });
     } else {
         alert("Debe registrarse nuevamente");
-        return
+        return;
     }
-    if (token == "") {
+    if (token === "") {
         alert("Debe registrarse nuevamente");
-        return
+        return;
     }
     const headers = {
         'x-acces-token': token,
@@ -72,26 +75,51 @@ console.log(registrarProductos);
             stock
         }),
         headers
-    }
+    };
     fetch(url, options)
         .then(res => res.json())
         .then(data => {
             console.log(data);
-            alert('Registro guardado' + data);
+            alert('Registro guardado: ' + data);
         })
         .catch(error => {
             alert("Error al guardar registro", error);
-        })
+        });
+};
+
+// Para modificar un producto
+function cargarProducto(event) {
+    const parent = event.target.parentElement.parentElement.children;
+    document.getElementById('idproducto').value = parent[0].innerHTML;
+    document.getElementById('nombrep').value = parent[2].innerHTML;
+    document.getElementById('color').value = parent[3].innerHTML;
+    document.getElementById('precio').value = parent[4].innerHTML;
+    document.getElementById('stock').value = parent[5].innerHTML;
 }
 
-//Para modificar un producto
-function cargarProducto(event) {
-    document.getElementById('idproducto').value = event.target.parentElement.parentElement.children[0].innerHTML;
-    document.getElementById('nombrep').value = event.target.parentElement.parentElement.children[2].innerHTML;
-    document.getElementById('color').value = event.target.parentElement.parentElement.children[3].innerHTML;
-    document.getElementById('precio').value = event.target.parentElement.parentElement.children[4].innerHTML;
-    
+function cargarCompra(event) {
+    const parent = event.target.parentElement.parentElement.children;
+    document.getElementById('nombrepcompra').value = parent[2].innerHTML;
+    document.getElementById('preciocompra').value = parent[4].innerHTML;
+    document.getElementById('cantidadcompra').value = 1; // Inicializa en 1
+    calcularTotalCompra();
 }
+
+function calcularTotalCompra() {
+    const precio = parseFloat(document.getElementById('preciocompra').value);
+    const cantidad = parseInt(document.getElementById('cantidadcompra').value);
+    const total = precio * cantidad;
+    document.getElementById('totalcompra').innerText = `Total: $${total.toFixed(2)}`;
+}
+
+// Función para comprar productos
+const comprarProducto = () => {
+    const nombrep = document.getElementById('nombrepcompra').value;
+    const cantidad = document.getElementById('cantidadcompra').value;
+
+    const url = `/reporte?nombrep=${nombrep}&cantidad=${cantidad}`;
+    window.open(url);
+};
 
 // Función para modificar el producto
 function modificarProducto() {
@@ -99,6 +127,7 @@ function modificarProducto() {
     const nombrep = document.getElementById('nombrep').value;
     const color = document.getElementById('color').value;
     const precio = document.getElementById('precio').value;
+    const stock = document.getElementById('stock').value;
 
     const url = "http://localhost:9000/api/productos";
     let token = "";
@@ -117,7 +146,7 @@ function modificarProducto() {
         return;
     }
 
-    if (token == "") {
+    if (token === "") {
         alert("Debe registrarse nuevamente");
         return;
     }
@@ -133,7 +162,8 @@ function modificarProducto() {
             idproducto,
             nombrep,
             color,
-            precio
+            precio,
+            stock
         }),
         headers
     };
@@ -153,7 +183,7 @@ function modificarProducto() {
         });
 }
 
-//Para que funcione 
+// Para que funcione 
 const borrarProducto = async (event) => {
     let codigo = event.target.parentElement.parentElement.children[0].innerHTML;
 

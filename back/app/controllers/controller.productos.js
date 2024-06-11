@@ -54,7 +54,9 @@ export const actualizarProductos = async (req, res) => {
             SET
             nombrep = '${info.nombrep}',
             color = '${info.color}',
-            precio = ${info.precio}
+            precio = ${info.precio},
+            stock = ${info.stock}
+
             WHERE idproducto = ${info.idproducto}
         `);
         if (resultado[0].affectedRows > 0) {

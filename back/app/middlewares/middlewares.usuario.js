@@ -3,9 +3,9 @@ import { config } from "dotenv"
 config();
 export const tokenSing = (data) => { //PARA CREAR TOKENS
     return jwt.sign({
+        idusuario: data.idusuario,
         email: data.email,
-        contrasena: data.contrasena,
-        firma: "skarlett"
+        roles: data.roles
     }, process.env.JWT_SECRET,
         {
             expiresIn: process.env.JWT_TIMEEXPIRE
@@ -38,14 +38,3 @@ export const validarPermiso = (req, res, next) => {
         })
     }
 }
-
-
-
-
-
-
-
-
-
-
-

@@ -15,5 +15,6 @@ app.get("/", (req, res)=>{
 });
 app.use("/", ruta)
 
+
 export default app;
     

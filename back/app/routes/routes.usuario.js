@@ -9,6 +9,7 @@ rutaUsuario.post("/usuario", validarPermiso, crearUsuario);
 rutaUsuario.get("/usuario/:id", validarPermiso, mostrarUsuario);
 rutaUsuario.get("/usuario",listarUsuario);
 rutaUsuario.post("/login",loginUsuario);
+rutaUsuario.post("/registro",crearUsuario);
 rutaUsuario.put("/usuario", validarPermiso, actualizarUsuario);
 rutaUsuario.delete("/usuario", validarPermiso, eliminarUsuario);
 

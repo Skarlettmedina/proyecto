@@ -7,6 +7,5 @@ const rutaUsuario = Router();
 rutaUsuario.get("/usuario", listarUsuario);
 rutaUsuario.get("/registrar", registrarUsuario);
 rutaUsuario.get("/salir", salirUsuario);
-rutaUsuario.get("/reporte", generar);
 
 export default rutaUsuario;

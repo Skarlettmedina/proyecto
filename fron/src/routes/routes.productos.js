@@ -7,4 +7,5 @@ rutaProductos.get("/productos", productos);
 rutaProductos.get("/registrarProductos", registrarProductos);
 
 
+
 export default rutaProductos;

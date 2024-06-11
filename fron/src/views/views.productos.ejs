@@ -1,32 +1,21 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Document</title>
-   
-</head>
-<body> -->
+<%- include("partials/partials.dash.header.ejs", { datos: datos, data: data }) %>
 
-  <%- include("partials/partials.dash.header.ejs", { datos: datos, data: data }) %>
-
-  <section class="content">
-      <div class="box">
-          <div class="box-header with-border bg-navy">
-              <h3 class="box-title">Lista de Productos</h3>
-              <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                      <i class="fa fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-                      <i class="fa fa-times"></i>
-                  </button>
-              </div>
-          </div>
-          <div class="box-body">
-              <div class="tableproducto">
-                  <div class="table-responsive">
+<section class="content">
+    <div class="box">
+        <div class="box-header with-border bg-navy">
+            <h3 class="box-title">Lista de Productos</h3>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="box-body">
+            <div class="tableproducto">
+                <div class="table-responsive">
                     <div class="info-box bg-purple">
                         <span class="info-box-icon"><i class="fa fa-fw fa-cubes"></i></span>
                         <div class="info-box-content">
@@ -35,9 +24,9 @@
                         </div>
                     </div>
 
-                      <table border="1">
-                          <thead>
-                              <tr>
+                    <table border="1">
+                        <thead>
+                            <tr>
                                 <th hidden>Id</th>
                                 <th>N° Productos</th>
                                 <th>Nombre</th>
@@ -45,79 +34,124 @@
                                 <th>Precio</th>
                                 <th>Stock</th>
                                 <th>Opciones</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <% data.forEach(function(registro) { %>
-                                <% let contadorp = 1 ; %>
-                              <tr>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% data.forEach(function(registro, index) { %>
+                            <tr>
                                 <td data-label="Id" hidden><%= registro.idproducto %></td>
-                                <td><%= contadorp %></td> <!-- Mostrando el contador -->
+                                <td><%= index + 1 %></td>
                                 <td data-label="Nombre"><%= registro.nombrep %></td>
                                 <td data-label="Color"><%= registro.color %></td>
                                 <td data-label="Precio"><%= registro.precio %></td>
-                                <td data-label="stock"><%= registro.stock %></td>
+                                <td data-label="Stock"><%= registro.stock %></td>
                                 <td data-label="Opciones">
-                                    <button class="btn btn bg-purple" data-toggle="modal" data-target="#modal-warning" onclick="cargarProducto(event);">Modificar</button>
-                                    <button class="btn btn bg-navy" id="elimina" onclick="eliminarProducto(event);">Eliminar</button>
-                                  </td>
-                                </tr>          
-                                <% contadorp++; %>
-                              <% }) %>
-                          </tbody>
-                      </table>
-                  </div>
-                  <input type="hidden" id="idproducto">
-              </div>
-          </div>
-      </div>
-  </section>
+                                    <button onclick="cargarProducto(event)" class="btn btn bg-purple btn-sm" data-toggle="modal" data-target="#modificarproducto">
+                                        <i class="fa fa-pencil-square"></i> Editar
+                                    </button>
+                                    <button onclick="eliminarProducto(event)" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-trash"></i> Eliminar
+                                    </button>
+                                    <button onclick="cargarCompra(event)" class="btn btn-success btn-sm" data-toggle="modal" data-target="#compraproducto">
+                                        <i class="fa fa-shopping-cart"></i> Comprar
+                                    </button>
+                                </td>
+                            </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="box-footer">
+            Lista de Productos
+        </div>
+    </div>
+</section>
+
   
-  <div class="control-sidebar-bg"></div>
-  
-  <div class="modal modal-warning fade" id="modal-warning">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                  </button>
-                  <h4 class="modal-title">Modificar Producto</h4>
-              </div>
-              <div class="modal-body">
-                  <div class="box-body">
-                      <div class="row">
-                          <div class="col-md-6">
-                              <div class="form-group">
-                                  <label for="nombrep">Producto</label>
-                                  <input type="text" id="nombrep" class="form-control" placeholder="Insertar Producto" autocomplete="nombrep">
-                              </div>
-                              <div class="form-group">
-                                  <label for="color">Color</label>
-                                  <input type="text" class="form-control" id="color" placeholder="Insertar Color" autocomplete="color">
-                              </div>
-                          </div>
-                          <div class="col-md-6">
-                              <div class="form-group">
-                                  <label for="precio">Precio</label>
-                                  <input type="text" class="form-control" id="precio" placeholder="Insertar Precio" autocomplete="precio">
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-outline" onclick="modificarProducto();">Guardar</button>
-              </div>
-          </div>
-      </div>
-  </div>
-  
-  <script src="./js/productos.js"></script>
-  <script src="./js/main.js"></script>
-  <%- include("partials/partials.dash.footer.ejs") %>
-        
-  
+<!-- Modal para modificar producto -->
+<div class="modal fade" id="modificarproducto" tabindex="-1" role="dialog" aria-labelledby="modificarProductoLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-navy">
+                <h4 class="modal-title" id="modificarProductoLabel">Modificar Producto</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" id="idproducto">
+                    <div class="form-group">
+                        <label for="nombrep">Nombre</label>
+                        <input type="text" class="form-control" id="nombrep">
+                    </div>
+                    <div class="form-group">
+                        <label for="color">Color</label>
+                        <input type="text" class="form-control" id="color">
+                    </div>
+                    <div class="form-group">
+                        <label for="precio">Precio</label>
+                        <input type="number" class="form-control" id="precio">
+                    </div>
+                    <div class="form-group">
+                        <label for="stock">Stock</label>
+                        <input type="number" class="form-control" id="stock">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer bg-navy">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="modificarProducto()">Guardar Cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para comprar producto -->
+<div class="modal fade" id="compraproducto" tabindex="-1" role="dialog" aria-labelledby="comprarProductoLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-navy">
+                <h4 class="modal-title" id="comprarProductoLabel">Comprar Producto</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="nombrepcompra">Nombre del Producto</label>
+                        <input type="text" class="form-control" id="nombrepcompra" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="preciocompra">Precio</label>
+                        <input type="number" class="form-control" id="preciocompra" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="cantidadcompra">Cantidad</label>
+                        <input type="number" class="form-control" id="cantidadcompra" value="1" min="1" oninput="calcularTotalCompra()">
+                    </div>
+                    <div class="form-group">
+                        <label id="totalcompra">Total: $0.00</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer bg-navy">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="comprarProducto()">Comprar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/productos.js"></script>
+<%- include("partials/partials.dash.footer.ejs") %>
+
+</body>
+</html>
+    
   <!-- </body>
+  </html> -->  <!-- </body>
   </html> -->
