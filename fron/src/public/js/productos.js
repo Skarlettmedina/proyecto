@@ -116,8 +116,9 @@ function calcularTotalCompra() {
 const comprarProducto = () => {
     const nombrep = document.getElementById('nombrepcompra').value;
     const cantidad = document.getElementById('cantidadcompra').value;
+    const precio = document.getElementById('preciocompra').value;
 
-    const url = `/reporte?nombrep=${nombrep}&cantidad=${cantidad}`;
+    const url = `/factura?nombrep=${nombrep}&precio=${precio}`;
     window.open(url);
 };
 
